@@ -26,20 +26,6 @@ let directionY = 1
 let directionX = randint(-1, 1)
 basic.pause(500)
 basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-    if (game.isGameOver()) {
-        for (let index = 0; index < 2; index++) {
-            music.playMelody("F F G G A A G G ", 120)
-        }
-        led.enable(true)
-    }
-})
-basic.forever(function () {
     Ball.change(LedSpriteProperty.X, directionX)
     Ball.change(LedSpriteProperty.Y, directionY)
     if (Ball.isTouching(PaddleA) || Ball.isTouching(PaddleB)) {
@@ -65,5 +51,14 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-	
+    if (game.isGameOver()) {
+        for (let index = 0; index < 2; index++) {
+            music.playMelody("F F G G A A G G ", 120)
+        }
+    }
+})
+basic.forever(function () {
+    if (Ball.isTouching(PaddleA) || Ball.isTouching(PaddleB)) {
+        game.addScore(1)
+    }
 })
